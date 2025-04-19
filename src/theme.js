@@ -21,7 +21,7 @@ const theme = createTheme({
       second: '#fff'
     },
     secondary: {
-      main: '#212121', // Đen
+      main: '#2c3e50', // Đen
     },
     tertiary: {
       main: '#FFFFFF' // Trắng

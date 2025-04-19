@@ -1,21 +1,36 @@
-
 module.exports = {
-  env: { es2020: true, node: true },
+  env: { browser: true, es2020: true, node: true },
   extends: [
-    'eslint:recommended'
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended'
   ],
-  parser: '@babel/eslint-parser',
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    requireConfigFile: false,
-    allowImportExportEverywhere: true
-  },
-  plugins: [],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: [
+    'react',
+    'react-hooks',
+    'react-refresh'
+  ],
   rules: {
+    // react
+    'react-refresh/only-export-components': 'warn',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+    'react/prop-types': 0,
+    'react/display-name': 0,
+
+    // Mui
+    'no-restricted-imports': [
+      'error',
+      {
+        'patterns': ['@mui/*/*/*']
+      }
+    ],
+
     // Common
     'no-console': 1,
-    'no-extra-boolean-cast': 0,
     'no-lonely-if': 1,
     'no-unused-vars': 1,
     'no-trailing-spaces': 1,
@@ -23,7 +38,7 @@ module.exports = {
     'no-multiple-empty-lines': 1,
     'space-before-blocks': ['error', 'always'],
     'object-curly-spacing': [1, 'always'],
-    'indent': ['warn', 4],
+    'indent': ['warn', 2],
     'semi': [1, 'never'],
     'quotes': ['error', 'single'],
     'array-bracket-spacing': 1,
